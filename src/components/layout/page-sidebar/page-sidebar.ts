@@ -1,10 +1,12 @@
 import checkbox from '@/components/checkbox/checkbox.vue';
+import icon from '@/components/icon/icon.vue';
 import modal from '@/components/modal/modal.vue';
+import { capitalize } from '@/helpers/string-helpers';
+import { IProject } from '@/models/IProject';
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { mapActions, mapGetters } from 'vuex';
 import pageSettings from './page-settings/page-settings.vue';
-import pageSidebarConfig from './page-sidebar-config';
 import sidebarProject from './sidebar-project/sidebar-project.vue';
 
 export default defineComponent({
@@ -13,7 +15,8 @@ export default defineComponent({
     sidebarProject,
     modal,
     checkbox,
-    pageSettings
+    pageSettings,
+    icon
   },
   setup() {
     const route = computed(() => useRoute()).value;
@@ -26,7 +29,7 @@ export default defineComponent({
     };
   },
   data: () => ({
-    ...pageSidebarConfig,
+    filters: [] as any[],
     showFilterModal: false,
     showSettingsModal: false,
     innerLinks: [
@@ -48,7 +51,16 @@ export default defineComponent({
     }),
   },
   created() {
-    this.fetchProjects();
+    this.fetchProjects()
+      .then(() => {
+        const tags = [...new Set((this.projects as IProject[]).map(p => p.languages).flat())];
+        this.filters = tags.map(t => ({
+          name: capitalize(t),
+          enabled: true,
+          icon: t,
+          key: t
+        }));
+      });
   },
   methods: {
     ...mapActions(['fetchProjects']),
@@ -56,7 +68,7 @@ export default defineComponent({
       this.showFilterModal = !this.showFilterModal;
     },
     toggleSettingsModal() {
-      this.router.go(-1);
+      this.showSettingsModal = !this.showSettingsModal;
     }
   }
 });

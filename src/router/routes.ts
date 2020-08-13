@@ -9,11 +9,6 @@ export const routes: RouteRecordRaw[] = [
     component: homePage,
     children: [
       {
-        path: '/settings',
-        name: 'Settings',
-        component: {}
-      },
-      {
         path: '/projects/:id/description',
         name: 'Project information',
         component: projectPage,

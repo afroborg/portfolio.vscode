@@ -18,6 +18,9 @@ export default defineComponent({
     },
     tags: Array,
     languages: Array,
+    github: Object,
+    isPrivate: Boolean,
+    demo: String
   },
   setup() {
     const router = useRouter();
@@ -28,6 +31,12 @@ export default defineComponent({
   data: () => ({
     expanded: false,
   }),
+  mounted() {
+    const id = this.router.currentRoute.value.params.id;
+    if (id && id === this.id) {
+      this.expanded = true;
+    }
+  },
   methods: {
     toggle() {
       this.expanded = !this.expanded;

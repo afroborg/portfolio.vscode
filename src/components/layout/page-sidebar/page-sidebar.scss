@@ -19,6 +19,7 @@
   padding: $padding-double;
   position: relative;
   opacity: 0.2;
+  cursor: pointer;
   &::before {
     content: '';
     position: absolute;
@@ -63,7 +64,7 @@
 }
 
 .sidebar__checkbox__content {
-  i {
+  img {
     margin-right: $margin;
   }
 }
