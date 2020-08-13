@@ -1,0 +1,47 @@
+<template>
+  <div class="page__sidebar">
+    <div class="page__inner-sidebar">
+      <div v-for="link in innerLinks" :key="link.path">
+        <router-link v-if="!link.path.includes('http')" :to="link.path" class="inner-sidebar__link" active-class="inner-sidebar__link--active">
+          <i :class="link.icon" />
+        </router-link>
+
+        <a v-else :href="link.path" class="inner-sidebar__link" target="_blank" rel="_norefferer">
+          <i :class="link.icon" />
+        </a>
+      </div>
+      <router-link to="/settings" class="inner-sidebar__link inner-sidebar__link--settings" active-class="inner-sidebar__link--active">
+        <i class="fal fa-cog" />
+      </router-link>
+    </div>
+
+    <div class="page__sidebar__projects">
+      <div class="projects__header">
+        <h2>projects</h2>
+        <div class="projects__filter" @click="toggleFilterModal">
+          <i class="far fa-filter" />
+        </div>
+      </div>
+      <div class="projects-list">
+        <sidebar-project v-for="project in projects" :key="project.name" v-bind="project" />
+      </div>
+    </div>
+
+    <teleport to="#modal-teleport">
+      <modal :visible="showFilterModal" :on-close="toggleFilterModal" title="Filter projects" ok-text="Save" :show-footer="false">
+        <checkbox v-for="filter in filters" :key="filter.name" v-model:value="filter.enabled" :name="filter.name">
+          <div class="sidebar__checkbox__content">
+            <i :class="filter.icon" />
+            <span>{{ filter.name }}</span>
+          </div>
+        </checkbox>
+      </modal>
+      <modal :visible="route.path === '/settings'" :on-close="toggleSettingsModal" title="Page settings" ok-text="Save" :show-footer="false">
+        <page-settings />
+      </modal>
+    </teleport>
+  </div>
+</template>
+
+<script lang="ts" src="./page-sidebar.ts"></script>
+<style lang="scss" src="./page-sidebar.scss"></style>

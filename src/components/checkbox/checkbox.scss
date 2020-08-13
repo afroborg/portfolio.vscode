@@ -1,0 +1,27 @@
+$checkbox-size: 20px;
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  padding: $padding;
+  cursor: pointer;
+}
+
+.checkbox__toggle {
+  margin-right: $margin;
+  height: $checkbox-size;
+  width: $checkbox-size;
+  background: $color-code-sidebar;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  i {
+    font-size: $checkbox-size * 0.6;
+    transform: scale(0);
+    transition: all 200ms;
+  }
+
+  &--toggled i {
+    transform: scale(1.3);
+  }
+}

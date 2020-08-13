@@ -1,0 +1,73 @@
+.page__sidebar {
+  background: $color-code-sidebar;
+  grid-area: sidebar;
+  display: grid;
+  grid-template-columns: 15% 1fr;
+}
+
+.page__inner-sidebar {
+  background: $color-code-inner-sidebar;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-sidebar__link {
+  color: $color-inner-sidebar-text;
+  font-size: 1.8em;
+  display: block;
+  text-align: center;
+  padding: $padding-double;
+  position: relative;
+  opacity: 0.2;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: $color-complementary;
+    transition: all 200ms;
+  }
+  &--active {
+    opacity: 1;
+    &::before {
+      width: 2px;
+    }
+  }
+}
+
+.inner-sidebar__link--settings {
+  margin-top: auto;
+}
+
+.page__sidebar__projects {
+  padding: $padding-double;
+}
+
+.projects__header {
+  display: flex;
+}
+
+.projects__header h2 {
+  font-size: 1em;
+  font-weight: $font-weight-regular;
+}
+
+.projects__header i {
+  margin-left: $margin;
+}
+
+.projects-list {
+  padding: $padding;
+}
+
+.sidebar__checkbox__content {
+  i {
+    margin-right: $margin;
+  }
+}
+
+.projects__filter {
+  cursor: pointer;
+}

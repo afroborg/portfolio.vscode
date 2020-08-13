@@ -1,6 +1,9 @@
 <template>
-  <div class="home-page">
-    testing testing
+  <div class="home__page">
+    <page-header />
+    <page-sidebar />
+    <page-content />
+    <page-footer />
   </div>
 </template>
 

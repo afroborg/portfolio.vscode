@@ -1,0 +1,12 @@
+.table {
+  display: table; 
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-column {
+  display: table-cell;
+  padding: $padding;
+}

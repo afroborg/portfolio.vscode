@@ -1,10 +1,20 @@
+@import './css-variables';
 
 // Colors
-$beige-main: #EAE2B7;
-$dark-blue-main: #003049;
-$orange-main: #F77F00;
-$red-main: #D62828;
+$color-code-content: var(--color-code-content);
+$color-code-header: var(--color-code-header);
+$color-code-inner-sidebar: var(--color-code-inner-sidebar);
+$color-code-sidebar: var(--color-code-sidebar);
+$color-code-footer: var(--color-code-footer);
+$color-inner-sidebar-text: var(--color-inner-sidebar-text);
+$color-text: var(--color-text);
+$color-text-40: var(--color-text-40);
+$color-complementary: var(--color-complementary);
 
-$white-faded-10: rgba(255,255,255,0.1);
-$white-faded-20: rgba(255,255,255,0.2);
-$white-faded-30: rgba(255,255,255,0.3);
+$color-mac-red: #F55D56;
+$color-mac-yellow: #FFC42F;
+$color-mac-green: #29D042;
+
+// Language colors
+$color-language-react: #60DAFB;
+$color-language-vue: #3FB883;

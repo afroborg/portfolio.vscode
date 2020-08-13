@@ -1,6 +1,7 @@
 @import './variables';
 @import './typography';
 @import './keyframes';
+@import './table';
 
 * {
   margin: 0;
@@ -11,4 +12,9 @@
 
 body {
   font-family: 'Raleway', sans-serif;
+  color: $color-text;
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }

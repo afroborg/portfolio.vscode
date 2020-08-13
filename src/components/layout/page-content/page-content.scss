@@ -1,0 +1,36 @@
+.page__content {
+  grid-area: content;
+  background: $color-code-content;
+  display: grid;
+  grid-template-rows: $tab-list-height 1fr;
+}
+
+.page__content__tabs {
+  height: 100%;
+  display: flex;
+}
+
+.page__content__tabs__tab {
+  border-bottom: 1px solid transparent;
+  height: 100%;
+  padding: 0 $padding;
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;
+  width: 140px;
+  overflow: hidden;
+  font-size: 0.9em;
+
+  span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  i {
+    margin-left: $margin;
+  }
+
+  &--active {
+    border-bottom: 1px solid $color-complementary;
+  }
+
+}

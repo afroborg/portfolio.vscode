@@ -1,0 +1,11 @@
+.home__page {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: $header-height 1fr $header-height;
+  grid-template-areas: 
+  "header header"
+  "sidebar content"
+  "footer footer"
+}

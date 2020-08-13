@@ -1,0 +1,32 @@
+.page__header {
+  height: $header-height;
+  background: $color-code-header;
+  grid-area: header;
+}
+
+.page__header__mac-buttons {
+  display: flex;
+  height: 100%;
+  padding: $padding;
+}
+
+.mac-button {
+  $size: $header-height - (2 * $padding);
+  width: $size;
+  height: $size;
+  margin-right: $margin;
+  border-radius: 50%;
+  cursor: pointer;
+  &--close {
+    background: $color-mac-red;
+  }
+  &--minimize {
+    background: $color-mac-yellow;
+  }
+  &--expand {
+    background: $color-mac-green;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}

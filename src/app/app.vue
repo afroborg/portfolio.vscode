@@ -1,5 +1,6 @@
 <template>
-  <router-view />
+    <div id="modal-teleport" />
+    <router-view />
 </template>
 
 <script lang="ts" src="./app.ts"></script>
