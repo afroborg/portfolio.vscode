@@ -11,7 +11,7 @@
 
   @media #{$screen-small} {
     grid-template-columns: auto;
-    grid-template-rows: $header-height $inner-sidebar-width 1fr $header-height;
+    grid-template-rows: $header-height auto 1fr $header-height;
       grid-template-areas: 
       "header header"
       "sidebar sidebar"

@@ -3,9 +3,11 @@
   grid-area: sidebar;
   display: grid;
   grid-template-columns: $inner-sidebar-width 1fr;
+  overflow: hidden;
 
   @media #{$screen-small} {
     grid-template-columns: 1fr;
+    grid-template-rows: $inner-sidebar-width auto;
   }
 }
 
@@ -13,6 +15,7 @@
   background: $color-code-inner-sidebar;
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   @media #{$screen-small} {
     flex-direction: row;
@@ -28,6 +31,7 @@
   position: relative;
   opacity: 0.2;
   cursor: pointer;
+
   &::before {
     content: '';
     position: absolute;
@@ -38,10 +42,27 @@
     background: $color-complementary;
     transition: all 200ms;
   }
+  
+  
   &--active {
     opacity: 1;
     &::before {
       width: 2px;
+    }
+  }
+
+  @media #{$screen-small} {
+    height: 100%;
+    &::before {
+      width: 100%;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      height: 0;
+    }
+
+    &--active::before {
+      height: 2px;
     }
   }
 }
