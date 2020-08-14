@@ -1,5 +1,18 @@
 [data-theme='dark'] {
   // Dark colors
+  --color-code-content: #252526;
+  --color-code-header: #3c3c3c;
+  --color-code-inner-sidebar: #333333;
+  --color-code-sidebar: #333333;
+  --color-code-footer: #0078cf;
+  --color-text: #fff;
+  --color-text-40: rgba(255, 255, 255, 0.4);
+  --color-inner-sidebar-text: #fff;
+  --color-complementary: #2c7bb5;
+}
+
+[data-theme='material-dark'] {
+  // Dark colors
   --color-code-content: #132c38;
   --color-code-header: #092532;
   --color-code-inner-sidebar: #051f2b;
@@ -22,4 +35,17 @@
   --color-text-40: rgba(0, 0, 0, 0.4);
   --color-inner-sidebar-text: #fff;
   --color-complementary: #fc75aa;
+}
+
+[data-theme='material-light'] {
+  // Light colors
+  --color-code-content: #ffffff;
+  --color-code-header: #ffffff;
+  --color-code-inner-sidebar: #fafafa;
+  --color-code-sidebar: #fafafa;
+  --color-code-footer:#007acc;
+  --color-text: #7d8385;
+  --color-text-40: rgba(0, 0, 0, 0.4);
+  --color-inner-sidebar-text: #90a4af;
+  --color-complementary: #9dd5d5;
 }

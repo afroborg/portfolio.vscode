@@ -57,6 +57,7 @@ $item-header-height: 20px;
   }
 
   &--disabled {
+    color: $color-text-40;
     text-decoration: line-through;
     pointer-events: none;
     .fa-lock-alt {

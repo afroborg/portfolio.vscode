@@ -29,6 +29,7 @@
 
     <teleport to="#modal-teleport">
       <modal :visible="showFilterModal" :on-close="toggleFilterModal" title="Filter projects" ok-text="Save" :show-footer="false">
+        <h3>Languages</h3>
         <checkbox v-for="filter in filters" :key="filter.name" v-model:value="filter.enabled" :name="filter.name">
           <div class="sidebar__checkbox__content">
             <icon :name="filter.icon" />
