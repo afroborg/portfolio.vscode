@@ -3,6 +3,7 @@
   background: $color-code-content;
   display: grid;
   grid-template-rows: $tab-list-height 1fr;
+  overflow: auto;
 }
 
 .page__content__tabs {
