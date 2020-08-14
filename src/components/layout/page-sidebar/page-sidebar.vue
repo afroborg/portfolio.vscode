@@ -10,7 +10,7 @@
           <i :class="link.icon" />
         </a>
       </div>
-      <div class="inner-sidebar__link inner-sidebar__link--settings" active-class="inner-sidebar__link--active" @click="toggleSettingsModal">
+      <div class="inner-sidebar__link inner-sidebar__link--settings" :class="{ 'inner-sidebar__link--active': showSettingsModal }" @click="toggleSettingsModal">
         <i class="fal fa-cog" />
       </div>
     </div>
@@ -27,20 +27,19 @@
       </div>
     </div>
 
-    <teleport to="#modal-teleport">
-      <modal :visible="showFilterModal" :on-close="toggleFilterModal" title="Filter projects" ok-text="Save" :show-footer="false">
-        <h3>Languages</h3>
-        <checkbox v-for="filter in filters" :key="filter.name" v-model:value="filter.enabled" :name="filter.name">
-          <div class="sidebar__checkbox__content">
-            <icon :name="filter.icon" />
-            <span>{{ filter.name }}</span>
-          </div>
-        </checkbox>
-      </modal>
-      <modal :visible="showSettingsModal" :on-close="toggleSettingsModal" title="Page settings" ok-text="Save" :show-footer="false">
-        <page-settings />
-      </modal>
-    </teleport>
+    <modal :visible="showFilterModal" :on-close="toggleFilterModal" title="Filter projects" ok-text="Save" :show-footer="false">
+      <h3>Languages</h3>
+      <checkbox v-for="filter in filters" :key="filter.name" v-model:value="filter.enabled" :name="filter.name">
+        <div class="sidebar__checkbox__content">
+          <icon :name="filter.icon" />
+          <span>{{ filter.name }}</span>
+        </div>
+      </checkbox>
+    </modal>
+
+    <modal :visible="showSettingsModal" :on-close="toggleSettingsModal" title="Page settings" ok-text="Save" :show-footer="false">
+      <page-settings />
+    </modal>
   </div>
 </template>
 
