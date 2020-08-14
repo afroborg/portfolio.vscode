@@ -31,6 +31,16 @@ export default defineComponent({
   mounted() {
     const theme = localStorage.getItem('theme') || 'dark';
     this.setTheme(theme);
+
+    // Theme switcher with alt+t
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e?.altKey && e?.key?.toLowerCase() === 't') {
+        const currentThemeIndex = this.themes.findIndex(t => t.key === this.theme);
+        const nextIndex = currentThemeIndex + 1 > this.themes.length - 1 ? 0 : currentThemeIndex + 1;
+        this.setTheme(this.themes[nextIndex].key);
+      }
+
+    });
   },
   methods: {
     setTheme(theme: string) {
