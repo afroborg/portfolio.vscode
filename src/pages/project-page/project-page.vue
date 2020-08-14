@@ -1,5 +1,5 @@
 <template>
-  <div class="project__page">
+  <div class="project__page" v-if="!isLoading">
     <h1>{{ project.name }}</h1>
     <div class="project__languages__list">
       <div v-for="language in project.languages" :key="language" class="project__language" :title="language">
@@ -36,9 +36,12 @@
       </div>
     </div>
 
-    <div v-if="project.github && project.githubContent" class="project__lastest-commits">
+    <div class="project__lastest-commits">
       <h2>Latest commits</h2>
-      <div class="lastest-commits__list">
+
+      <p v-if="project.isPrivate" class="no-content-available">This project is private</p>
+
+      <div class="lastest-commits__list" v-else-if="project.github && project.githubContent && project.githubContent.commits.length">
         <div v-for="(commit, i) in project.githubContent.commits" :key="`commit--${i}`" class="commit">
           <div class="commit__avatar">
             <img :src="commit.author.photoUrl" />
@@ -64,8 +67,22 @@
           </div>
         </div>
       </div>
+
+      <p v-else class="no-content-available">No commits available</p>
+    </div>
+
+    <div class="project__workflows">
+      <h2>Github workflows</h2>
+
+      <p v-if="project.isPrivate" class="no-content-available">This project is private</p>
+
+      <div v-else-if="project.gihtub && project.githubContent && project.githubContent.workflows.length" class="project__workflows__container">{{ project.githubContent.workflows }}</div>
+
+      <p v-else class="no-content-available">No workflows available</p>
     </div>
   </div>
+
+  <loader v-else message="Loading data" />
 </template>
 
 <script lang="ts" src="./project-page.ts"></script>

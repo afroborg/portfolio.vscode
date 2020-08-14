@@ -1,0 +1,14 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loader i {
+  font-size: 3em;
+}
+
+.loader__message {
+  margin-top: $margin-double;
+}

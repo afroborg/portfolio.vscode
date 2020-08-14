@@ -4,7 +4,7 @@
 
 .project__page h2 {
   font-size: 1.2em;
-  margin: $margin 0;
+  margin: $margin-double 0;
 }
 
 .project__languages__list {
@@ -17,7 +17,7 @@
   height: $size;
   width: $size;
   border-radius: 50%;
-  background: $color-code-header;
+  background: $color-code-sidebar;
   margin-right: $margin;
   display: grid;
   place-items: center;
@@ -89,4 +89,10 @@
   a {
     font-weight: $font-weight-bold;
   }
+}
+
+p.no-content-available {
+  color: $color-text-40;
+  font-style: italic;
+  font-size: 0.9em;
 }
