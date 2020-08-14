@@ -2,13 +2,21 @@
   background: $color-code-sidebar;
   grid-area: sidebar;
   display: grid;
-  grid-template-columns: 15% 1fr;
+  grid-template-columns: $inner-sidebar-width 1fr;
+
+  @media #{$screen-small} {
+    grid-template-columns: 1fr;
+  }
 }
 
 .page__inner-sidebar {
   background: $color-code-inner-sidebar;
   display: flex;
   flex-direction: column;
+
+  @media #{$screen-small} {
+    flex-direction: row;
+  }
 }
 
 .inner-sidebar__link {
@@ -40,6 +48,10 @@
 
 .inner-sidebar__link--settings {
   margin-top: auto;
+  @media #{$screen-small} {
+   margin-top: 0;
+   margin-left: auto;
+  }
 }
 
 .page__sidebar__projects {
