@@ -12,7 +12,7 @@
           <span>readme.md</span>
         </router-link>
         <a
-          :href="(!github || isPrivate) ? '#' : `https://github.com/${github.user}/${github.repository}`"
+          :href="!github || isPrivate ? '#' : `https://github.com/${github.user}/${github.repository}`"
           class="projects-list__item__content__item"
           :class="[(!github || isPrivate) && 'projects-list__item__content__item--disabled']"
           target="_blank"
@@ -20,12 +20,7 @@
           <span>github.html</span>
           <i v-if="!github || isPrivate" class="fal fa-lock-alt" />
         </a>
-        <a
-          :href="(!demo) ? '#' : demo"
-          class="projects-list__item__content__item"
-          :class="[!demo && 'projects-list__item__content__item--disabled']"
-          target="_blank"
-          rel="norefferer">
+        <a :href="!demo ? '#' : demo" class="projects-list__item__content__item" :class="[!demo && 'projects-list__item__content__item--disabled']" target="_blank" rel="norefferer">
           <span>demo.html</span>
           <i v-if="!demo" class="fal fa-lock-alt" />
         </a>
