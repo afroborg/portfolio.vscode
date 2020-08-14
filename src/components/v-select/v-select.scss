@@ -1,0 +1,15 @@
+.v-select label {
+  display: block;
+  font-weight: $font-weight-bold;
+  margin-bottom: $margin;
+}
+
+.v-select select {
+  outline: none;
+  background: $color-code-sidebar;
+  border: none;
+  width: 100%;
+  padding: $padding;
+  color: $color-text;
+  border-radius: 4px;
+}

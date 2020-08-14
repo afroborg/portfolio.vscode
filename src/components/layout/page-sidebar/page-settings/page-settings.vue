@@ -1,7 +1,6 @@
 <template>
   <div class="page-settings">
-    <i class="far fa-sun" @click="setTheme('light')" />
-    <i class="far fa-moon" @click="setTheme('dark')"/>
+    <v-select :value="theme" @change="setTheme" :options="themes" name="theme-select" label="Theme" />
   </div>
 </template>
 
