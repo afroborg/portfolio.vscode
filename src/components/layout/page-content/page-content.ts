@@ -1,4 +1,5 @@
 import icon from '@/components/icon/icon.vue';
+import { ITab } from '@/models/ITab';
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { mapActions, mapGetters } from 'vuex';
@@ -21,6 +22,18 @@ export default defineComponent({
     ...mapGetters({
       tabs: 'allTabs'
     })
+  },
+  mounted() {
+    // Control tabs with keyboard shortcuts
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.altKey && e.key.toLowerCase() === 'w' && this.tabs.length) {
+        const currentTabIndex = this.tabs.findIndex((t: ITab) => t.path === this.route.path);
+        if (currentTabIndex > -1) {
+          this.closeTab(e, currentTabIndex);
+        }
+      }
+    });
+
   },
   methods: {
     ...mapActions(['removeTabAtIndex']),
