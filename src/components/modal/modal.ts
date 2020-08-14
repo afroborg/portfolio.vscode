@@ -26,6 +26,14 @@ export default defineComponent({
   data: () => ({
     expanded: false,
   }),
+  mounted() {
+    // Close modal with esc key
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (this.visible && e.key.toLowerCase() === 'escape') {
+        this.onClose?.();
+      }
+    });
+  },
   methods: {
     ok() {
       this.ok?.();
