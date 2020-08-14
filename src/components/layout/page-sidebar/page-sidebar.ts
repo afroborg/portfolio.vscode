@@ -42,6 +42,11 @@ export default defineComponent({
         title: 'Github',
         icon: 'fal fa-code-merge',
         path: 'https://github.com/afroborg',
+      },
+      {
+        title: 'Github',
+        icon: 'fab fa-linkedin-in',
+        path: 'https://linkedin.com/in/axelfroborg',
       }
     ]
   }),

@@ -10,6 +10,9 @@ $margin-double: calc(#{$margin} * 2);
 $margin-triple: calc(#{$margin} * 3);
 $margin-half: calc(#{$margin} / 2);
 
+$screen-small: screen and (max-width: 1000px);
+
 $header-height: 32px;
 $tab-list-height: 35px;
 $sidebar-width: 320px;
+$inner-sidebar-width: 60px;
