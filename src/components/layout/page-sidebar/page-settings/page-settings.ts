@@ -39,8 +39,8 @@ export default defineComponent({
         const nextIndex = currentThemeIndex + 1 > this.themes.length - 1 ? 0 : currentThemeIndex + 1;
         this.setTheme(this.themes[nextIndex].key);
       }
-
     });
+
   },
   methods: {
     setTheme(theme: string) {
