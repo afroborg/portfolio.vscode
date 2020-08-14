@@ -1,7 +1,7 @@
 <template>
   <div class="page__sidebar">
     <div class="page__inner-sidebar">
-      <div v-for="link in innerLinks" :key="link.path">
+      <span v-for="link in innerLinks" :key="link.path">
         <router-link v-if="!link.path.includes('http')" :to="link.path" class="inner-sidebar__link" active-class="inner-sidebar__link--active">
           <i :class="link.icon" />
         </router-link>
@@ -9,8 +9,8 @@
         <a v-else :href="link.path" class="inner-sidebar__link" target="_blank" rel="_norefferer">
           <i :class="link.icon" />
         </a>
-      </div>
-      <div class="inner-sidebar__link inner-sidebar__link--settings" active-class="inner-sidebar__link--active" @click="toggleSettingsModal">
+      </span>
+      <div class="inner-sidebar__link inner-sidebar__link--settings" :class="{'inner-sidebar__link--active': showSettingsModal}" @click="toggleSettingsModal">
         <i class="fal fa-cog" />
       </div>
     </div>
@@ -37,6 +37,7 @@
           </div>
         </checkbox>
       </modal>
+
       <modal :visible="showSettingsModal" :on-close="toggleSettingsModal" title="Page settings" ok-text="Save" :show-footer="false">
         <page-settings />
       </modal>

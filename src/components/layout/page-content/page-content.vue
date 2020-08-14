@@ -7,6 +7,7 @@
         <i class="fal fa-times" @click="(e) => closeTab(e, i)" />
       </router-link>
     </div>
+
     <router-view />
   </div>
 </template>

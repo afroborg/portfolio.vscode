@@ -81,6 +81,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media #{$screen-small} {
+    max-width: 280px;
+  }
 }
 
 .commmit__authored {
