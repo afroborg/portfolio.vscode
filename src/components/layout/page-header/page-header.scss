@@ -2,6 +2,8 @@
   height: $header-height;
   background: $color-code-header;
   grid-area: header;
+  display: flex;
+  align-items: center;
 }
 
 .page__header__mac-buttons {
@@ -29,4 +31,10 @@
   &:hover {
     opacity: 0.8;
   }
+}
+
+.page__header__name {
+  color: $color-text-40;
+  margin: 0 auto;
+  padding-right: 200px;
 }

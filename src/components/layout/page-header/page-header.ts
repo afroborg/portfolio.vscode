@@ -8,6 +8,9 @@ export default defineComponent({
       router: useRouter()
     };
   },
+  data: () => ({
+    header: window.location.hostname
+  }),
   methods: {
     minimize() {
       this.router.push('/');
