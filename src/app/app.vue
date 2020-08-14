@@ -1,5 +1,6 @@
 <template>
     <div id="modal-teleport" />
+    <div id="notification-teleport" />
     <router-view />
 </template>
 

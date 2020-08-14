@@ -1,0 +1,48 @@
+$notification-close-btn-size: 16px;
+
+#notification-teleport {
+  position: absolute;
+  z-index: 10;
+  top: $margin-triple;
+  right: $margin-triple;
+}
+
+.notification {
+  background: $color-code-content;
+  width: 250px;
+  display: grid;
+  grid-template-columns: 1fr 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.notification__content {
+  padding: $padding;
+  margin-left: calc(#{$notification-close-btn-size} + #{$padding});
+}
+
+.notification__close-btn {
+  margin: $margin;
+  height: $notification-close-btn-size;
+  width: $notification-close-btn-size;
+  border-radius: 50%;
+  background: $color-mac-red;
+  position: absolute;
+}
+
+.notification__header {
+  font-weight: $font-weight-bold;
+}
+
+.notification__indicator {
+  &--success {
+    background: $color-mac-green;
+  }
+  &--failure {
+    background: $color-mac-red;
+  }
+  &--warning {
+    background: $color-mac-yellow;
+  }
+}

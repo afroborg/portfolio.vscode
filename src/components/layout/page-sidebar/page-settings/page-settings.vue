@@ -2,6 +2,8 @@
   <div class="page-settings">
     <v-select :value="theme" @change="setTheme" :options="themes" name="theme-select" label="Theme" />
   </div>
+
+  <notification />
 </template>
 
 <script lang="ts" src="./page-settings.ts"></script>

@@ -1,3 +1,4 @@
+import notification from '@/components/notification/notification.vue';
 import vSelect from '@/components/v-select/v-select.vue';
 import { IOption } from '@/models/IOption';
 import { defineComponent } from 'vue';
@@ -5,7 +6,8 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'page-settings',
   components: {
-    vSelect
+    vSelect,
+    notification
   },
   data: () => ({
     theme: 'dark',
