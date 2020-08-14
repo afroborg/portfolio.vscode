@@ -8,7 +8,7 @@
       </div>
 
       <div class="projects-list__item__content">
-        <router-link :to="`/projects/${id}/description`" class="projects-list__item__content__item" active-class="projects-list__item__content__item--active">
+        <router-link :to="`/projects/${id}/description`" @click="e => openTab(e, `/projects/${id}/description`)" class="projects-list__item__content__item" active-class="projects-list__item__content__item--active">
           <span>readme.md</span>
         </router-link>
         <a

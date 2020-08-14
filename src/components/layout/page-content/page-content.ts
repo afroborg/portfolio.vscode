@@ -1,9 +1,13 @@
+import icon from '@/components/icon/icon.vue';
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { mapActions, mapGetters } from 'vuex';
 
 export default defineComponent({
   name: 'page-content',
+  components: {
+    icon
+  },
   setup() {
     const route = computed(() => useRoute()).value;
     const router = useRouter();

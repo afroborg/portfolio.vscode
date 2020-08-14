@@ -20,10 +20,14 @@
   width: 140px;
   overflow: hidden;
   font-size: 0.9em;
-
+  img {
+    margin-right: $margin;
+  }
   span {
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    max-width: 80px;
   }
   i {
     margin-left: $margin;

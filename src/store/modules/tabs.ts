@@ -19,6 +19,11 @@ export default {
     allTabs: (state: any) => state.tabs,
   },
   actions: {
+    createTab({ state, commit }: any, tab: ITab) {
+      const tabs = [...state.tabs];
+      tabs.push(tab);
+      commit('setTabs', tabs);
+    },
     removeTabAtIndex({ state, commit }: any, index: number) {
       const tabs = [...state.tabs];
       tabs.splice(index, 1);
