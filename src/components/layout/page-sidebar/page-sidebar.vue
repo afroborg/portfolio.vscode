@@ -15,11 +15,14 @@
       </div>
     </div>
 
-    <div class="page__sidebar__projects">
-      <div class="projects__header">
+    <div class="page__sidebar__projects" :class="{'page__sidebar__projects--expanded': projectsExpanded}">
+      <div class="projects__header" @click="expandProjects">
         <h2>projects</h2>
         <div class="projects__filter" @click="toggleFilterModal">
           <i class="far fa-filter" />
+        </div>
+        <div class="projects__expand">
+          <i class="fas" :class="{'fa-angle-down': !projectsExpanded, 'fa-angle-up': projectsExpanded}" />
         </div>
       </div>
       <div class="projects-list">

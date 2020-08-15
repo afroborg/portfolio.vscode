@@ -16,7 +16,7 @@ export default defineComponent({
     modal,
     checkbox,
     pageSettings,
-    icon
+    icon,
   },
   setup() {
     const route = computed(() => useRoute()).value;
@@ -32,6 +32,8 @@ export default defineComponent({
     filters: [] as any[],
     showFilterModal: false,
     showSettingsModal: false,
+    showUserModal: false,
+    projectsExpanded: false,
     innerLinks: [
       {
         title: 'Projects',
@@ -74,6 +76,16 @@ export default defineComponent({
     },
     toggleSettingsModal() {
       this.showSettingsModal = !this.showSettingsModal;
+    },
+    toggleUser() {
+      // eslint-disable-next-line no-constant-condition
+      if (true) {
+        this.showUserModal = !this.showUserModal;
+      }
+    },
+    expandProjects() {
+      if (window.innerWidth < 1000)
+        this.projectsExpanded = !this.projectsExpanded;
     }
   }
 });
