@@ -4,12 +4,15 @@
   grid-area: header;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .page__header__mac-buttons {
   display: flex;
   height: 100%;
   padding: $padding;
+  position: absolute;
+
 }
 
 .mac-button {
@@ -36,5 +39,4 @@
 .page__header__name {
   color: $color-text-40;
   margin: 0 auto;
-  padding-right: 200px;
 }

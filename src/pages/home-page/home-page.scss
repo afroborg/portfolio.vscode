@@ -2,10 +2,20 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 400px 1fr;
   grid-template-rows: $header-height 1fr $header-height;
   grid-template-areas: 
   "header header"
   "sidebar content"
-  "footer footer"
+  "footer footer";
+
+  @media #{$screen-small} {
+    grid-template-columns: auto;
+    grid-template-rows: $header-height auto 1fr $header-height;
+      grid-template-areas: 
+      "header header"
+      "sidebar sidebar"
+      "content content"
+      "footer footer";
+  }
 }

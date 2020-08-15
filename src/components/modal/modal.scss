@@ -33,7 +33,7 @@
 .modal {
   border-radius: 8px;
   background: $color-code-content;
-  width: 30%;
+  width: 400px;
   overflow: hidden;
   pointer-events: none;
   opacity: 0;
@@ -58,15 +58,13 @@
 .modal-header {
   background: $color-code-header;
   height: $header-height;
-  display: grid;
-  grid-template-columns: 100px 1fr;
+  position: relative;
 }
 
 .modal-header__title {
   text-align: center;
   color: $color-text-40;
   line-height: $header-height;
-  padding-right: 150px;
   pointer-events: none;
 }
 
@@ -74,6 +72,7 @@
   display: flex;
   height: 100%;
   padding: $padding;
+  position: absolute;
 }
 
 .modal-content {

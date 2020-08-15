@@ -1,7 +1,7 @@
 <template>
   <div class="page__sidebar">
     <div class="page__inner-sidebar">
-      <div v-for="link in innerLinks" :key="link.path">
+      <span v-for="link in innerLinks" :key="link.path">
         <router-link v-if="!link.path.includes('http')" :to="link.path" class="inner-sidebar__link" active-class="inner-sidebar__link--active">
           <i :class="link.icon" />
         </router-link>
@@ -9,17 +9,20 @@
         <a v-else :href="link.path" class="inner-sidebar__link" target="_blank" rel="_norefferer">
           <i :class="link.icon" />
         </a>
-      </div>
-      <div class="inner-sidebar__link inner-sidebar__link--settings" :class="{ 'inner-sidebar__link--active': showSettingsModal }" @click="toggleSettingsModal">
+      </span>
+      <div class="inner-sidebar__link inner-sidebar__link--settings" :class="{'inner-sidebar__link--active': showSettingsModal}" @click="toggleSettingsModal">
         <i class="fal fa-cog" />
       </div>
     </div>
 
-    <div class="page__sidebar__projects">
-      <div class="projects__header">
+    <div class="page__sidebar__projects" :class="{'page__sidebar__projects--expanded': projectsExpanded}">
+      <div class="projects__header" @click="expandProjects">
         <h2>projects</h2>
         <div class="projects__filter" @click="toggleFilterModal">
           <i class="far fa-filter" />
+        </div>
+        <div class="projects__expand">
+          <i class="fas" :class="{'fa-angle-down': !projectsExpanded, 'fa-angle-up': projectsExpanded}" />
         </div>
       </div>
       <div class="projects-list">
