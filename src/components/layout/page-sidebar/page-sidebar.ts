@@ -1,5 +1,6 @@
 import checkbox from '@/components/checkbox/checkbox.vue';
 import icon from '@/components/icon/icon.vue';
+import loader from '@/components/loader/loader.vue';
 import modal from '@/components/modal/modal.vue';
 import { capitalize } from '@/helpers/string-helpers';
 import { IProject } from '@/models/IProject';
@@ -17,6 +18,7 @@ export default defineComponent({
     checkbox,
     pageSettings,
     icon,
+    loader
   },
   setup() {
     const route = computed(() => useRoute()).value;
@@ -34,6 +36,7 @@ export default defineComponent({
     showSettingsModal: false,
     showUserModal: false,
     projectsExpanded: false,
+    isLoading: false,
     innerLinks: [
       {
         title: 'Projects',
@@ -58,6 +61,7 @@ export default defineComponent({
     }),
   },
   created() {
+    this.isLoading = true;
     this.fetchProjects()
       .then(() => {
         const tags = [...new Set((this.projects as IProject[]).map(p => p.languages).flat())];
@@ -67,6 +71,7 @@ export default defineComponent({
           icon: t,
           key: t
         }));
+        this.isLoading = false;
       });
   },
   methods: {

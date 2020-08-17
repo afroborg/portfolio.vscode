@@ -10,23 +10,27 @@
           <i :class="link.icon" />
         </a>
       </span>
-      <div class="inner-sidebar__link inner-sidebar__link--settings" :class="{'inner-sidebar__link--active': showSettingsModal}" @click="toggleSettingsModal">
+      <div class="inner-sidebar__link inner-sidebar__link--settings" :class="{ 'inner-sidebar__link--active': showSettingsModal }" @click="toggleSettingsModal">
         <i class="fal fa-cog" />
       </div>
     </div>
 
-    <div class="page__sidebar__projects" :class="{'page__sidebar__projects--expanded': projectsExpanded}">
+    <div class="page__sidebar__projects" :class="{ 'page__sidebar__projects--expanded': projectsExpanded }">
       <div class="projects__header" @click="expandProjects">
         <h2>projects</h2>
         <div class="projects__filter" @click="toggleFilterModal">
           <i class="far fa-filter" />
         </div>
         <div class="projects__expand">
-          <i class="fas" :class="{'fa-angle-down': !projectsExpanded, 'fa-angle-up': projectsExpanded}" />
+          <i class="fas" :class="{ 'fa-angle-down': !projectsExpanded, 'fa-angle-up': projectsExpanded }" />
         </div>
       </div>
       <div class="projects-list">
-        <sidebar-project v-for="project in projects" :key="project.name" v-bind="project" />
+        <loader v-if="isLoading" message="Loading projects..." />
+
+        <template v-else>
+          <sidebar-project v-for="project in projects" :key="project.name" v-bind="project" />
+        </template>
       </div>
     </div>
 
