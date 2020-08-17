@@ -3,10 +3,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: $padding;
 }
 
 .loader i {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .loader__message {
