@@ -103,3 +103,9 @@ p.no-content-available {
   font-style: italic;
   font-size: 0.9em;
 }
+
+.project__workflows__container {
+  display: grid;
+  grid-gap: $margin;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
