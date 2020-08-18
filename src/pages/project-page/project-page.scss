@@ -1,5 +1,6 @@
 .project__page {
   padding: $padding-triple;
+  overflow-x: hidden;
 }
 
 .project__page h2 {
@@ -10,6 +11,7 @@
 .project__languages__list {
   margin: $margin-triple 0;
   display: flex;
+  overflow: auto;
 }
 
 .project__language {
@@ -21,6 +23,7 @@
   margin-right: $margin;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
 }
 
 .indicator {
@@ -83,7 +86,7 @@
   text-overflow: ellipsis;
 
   @media #{$screen-small} {
-    max-width: 280px;
+    max-width: 200px;
   }
 }
 

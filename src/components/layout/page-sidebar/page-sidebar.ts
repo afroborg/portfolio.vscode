@@ -1,5 +1,6 @@
 import checkbox from '@/components/checkbox/checkbox.vue';
 import icon from '@/components/icon/icon.vue';
+import loader from '@/components/loader/loader.vue';
 import modal from '@/components/modal/modal.vue';
 import { addNotification } from '@/helpers/notification-helpers';
 import { capitalize } from '@/helpers/string-helpers';
@@ -18,7 +19,8 @@ export default defineComponent({
     modal,
     checkbox,
     pageSettings,
-    icon
+    icon,
+    loader
   },
   setup() {
     const route = computed(() => useRoute()).value;
@@ -35,6 +37,9 @@ export default defineComponent({
     filters: [] as any[],
     showFilterModal: false,
     showSettingsModal: false,
+    showUserModal: false,
+    projectsExpanded: false,
+    isLoading: false,
     innerLinks: [
       {
         title: 'Projects',
@@ -59,6 +64,7 @@ export default defineComponent({
     }),
   },
   created() {
+    this.isLoading = true;
     this.fetchProjects()
       .then(() => {
         const tags = [...new Set((this.projects as IProject[]).map(p => p.languages).flat())];
@@ -71,7 +77,10 @@ export default defineComponent({
       })
       .catch(() => {
         this.notification({ header: 'Could not fetch projects', body: 'Please try again', type: 'failure' });
-      });
+      })
+    .then(() => {
+      this.isLoading = false;
+    });
   },
   methods: {
     ...mapActions(['fetchProjects']),
@@ -80,6 +89,16 @@ export default defineComponent({
     },
     toggleSettingsModal() {
       this.showSettingsModal = !this.showSettingsModal;
+    },
+    toggleUser() {
+      // eslint-disable-next-line no-constant-condition
+      if (true) {
+        this.showUserModal = !this.showUserModal;
+      }
+    },
+    expandProjects() {
+      if (window.innerWidth < 1000)
+        this.projectsExpanded = !this.projectsExpanded;
     }
   }
 });

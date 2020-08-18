@@ -42,9 +42,7 @@
     background: $color-complementary;
     transition: all 200ms;
   }
-  
-  
-  &--active {
+  &--active, &:active {
     opacity: 1;
     &::before {
       width: 2px;
@@ -76,11 +74,29 @@
 }
 
 .page__sidebar__projects {
-  padding: $padding-double;
+  @media #{$screen-small} {
+    max-height: calc(1em + (2 * #{$padding-double}));
+
+    &--expanded {
+      max-height: 2000px;
+    }
+  }
+}
+
+.projects__expand {
+  display: none;
+  margin-left: auto;
+  @media #{$screen-small} {
+    display: block;
+  }
 }
 
 .projects__header {
   display: flex;
+  padding: $padding-double;
+  @media #{$screen-small} {
+    cursor: pointer;
+  }
 }
 
 .projects__header h2 {

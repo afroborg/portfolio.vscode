@@ -53,7 +53,6 @@ export default defineComponent({
         this.setTheme(this.themes[nextIndex].key);
       }
     });
-
   },
   methods: {
     setTheme(key: string, showNotification = true) {
