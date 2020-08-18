@@ -42,7 +42,6 @@
     background: $color-complementary;
     transition: all 200ms;
   }
-
   &--active, &:active {
     opacity: 1;
     &::before {
@@ -69,8 +68,8 @@
 .inner-sidebar__link--settings {
   margin-top: auto;
   @media #{$screen-small} {
-    margin-top: 0;
-    margin-left: auto;
+   margin-top: 0;
+   margin-left: auto;
   }
 }
 

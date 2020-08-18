@@ -8,3 +8,14 @@
     transform: translateX(0);
   }
 }
+
+@keyframes notification {
+  from {
+    opacity: 0;
+    transform: translateX(250px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

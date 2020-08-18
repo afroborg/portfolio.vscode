@@ -2,11 +2,13 @@ import checkbox from '@/components/checkbox/checkbox.vue';
 import icon from '@/components/icon/icon.vue';
 import loader from '@/components/loader/loader.vue';
 import modal from '@/components/modal/modal.vue';
+import { addNotification } from '@/helpers/notification-helpers';
 import { capitalize } from '@/helpers/string-helpers';
+import { INotification } from '@/models/INotification';
 import { IProject } from '@/models/IProject';
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, useStore } from 'vuex';
 import pageSettings from './page-settings/page-settings.vue';
 import sidebarProject from './sidebar-project/sidebar-project.vue';
 
@@ -23,11 +25,12 @@ export default defineComponent({
   setup() {
     const route = computed(() => useRoute()).value;
     const router = computed(() => useRouter()).value;
-
-
+    const store = useStore();
+    const notification = (notification: INotification) => addNotification(notification, store);
     return {
       route,
-      router
+      router,
+      notification
     };
   },
   data: () => ({
@@ -71,8 +74,13 @@ export default defineComponent({
           icon: t,
           key: t
         }));
-        this.isLoading = false;
-      });
+      })
+      .catch(() => {
+        this.notification({ header: 'Could not fetch projects', body: 'Please try again', type: 'failure' });
+      })
+    .then(() => {
+      this.isLoading = false;
+    });
   },
   methods: {
     ...mapActions(['fetchProjects']),

@@ -3,16 +3,7 @@ import { ITab } from '@/models/ITab';
 export default {
   state: () => (
     {
-      tabs: [
-        // {
-        //   title: 'CDON Tools',
-        //   path: '/projects/asdf/description'
-        // },
-        // {
-        //   title: 'CDON Tools 2',
-        //   path: '/projects/asssssdf/description'
-        // }
-      ] as ITab[]
+      tabs: [] as ITab[]
     }
   ),
   getters: {
