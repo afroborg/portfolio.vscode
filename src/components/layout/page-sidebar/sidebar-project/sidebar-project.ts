@@ -1,6 +1,6 @@
 import icon from '@/components/icon/icon.vue';
 import { ITab } from '@/models/ITab';
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -48,7 +48,7 @@ const useTabs = (props: any) => {
   const store = useStore();
   const router = useRouter();
 
-  const tabs = store.state.tabs.tabs;
+  const tabs = computed(() => store.state.tabs.tabs);
 
   const createTab = (tab: ITab) => store.dispatch('createTab', tab);
 
@@ -60,8 +60,10 @@ const useTabs = (props: any) => {
       path: url,
       icon: props.languages[0]
     };
-    if (!tabs.some((s: ITab) => s.path === url))
+
+    if (!tabs.value.some((s: ITab) => s.path === url)) {
       createTab(tab);
+    }
 
     router.push(url);
   };

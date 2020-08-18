@@ -76,7 +76,13 @@
 
       <p v-if="project.isPrivate" class="no-content-available">This project is private</p>
 
-      <div v-else-if="project.gihtub && project.githubContent && project.githubContent.workflows.length" class="project__workflows__container">{{ project.githubContent.workflows }}</div>
+      <div v-else-if="project.github && project.githubContent && project.githubContent.workflows.length" class="project__workflows__container">
+        <div v-for="(workflow, i) in project.githubContent.workflows" :key="`project--${project.id}__workflow--${i}`" class="project__workflow">
+          <a :href="workflow.url" target="_blank">
+            <img :src="workflow.badge" />
+          </a>
+        </div>
+      </div>
 
       <p v-else class="no-content-available">No workflows available</p>
     </div>
