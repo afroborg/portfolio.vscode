@@ -5,7 +5,7 @@ export default defineComponent({
   name: 'notification',
   setup() {
     const store = useStore();
-    const notifications = computed(() => store.state.notifications);
+    const notifications = computed(() => store.state.notifications.notifications);
 
     const remove = (index: number) => store.dispatch('deleteNotification', index);
 

@@ -1,7 +1,7 @@
 import { INotification } from '@/models/INotification';
 
 export default {
-  state: () => ([] as INotification[]),
+  state: () => ({ notifications: [] as INotification[] }),
   getters: {
 
   },
@@ -14,7 +14,7 @@ export default {
     }
   },
   mutations: {
-    pushNotification: (state: any, notification: INotification) => state.push(notification),
-    removeNotificationAtIndex: (state: any, index: number) => state.splice(index, 1)
+    pushNotification: (state: any, notification: INotification) => state.notifications.push(notification),
+    removeNotificationAtIndex: (state: any, index: number) => state.notifications.splice(index, 1)
   }
 };
