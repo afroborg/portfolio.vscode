@@ -1,5 +1,5 @@
 <template>
-  <div class="project__page" v-if="!isLoading">
+  <div class="project__page" v-if="!isLoadingProject">
     <h1>{{ project.name }}</h1>
     <div class="project__languages__list">
       <div v-for="language in project.languages" :key="language" class="project__language" :title="language">

@@ -1,7 +1,7 @@
 <template>
   <div class="v-select">
     <label v-if="label" :for="`v-select--${name}`">{{ label }}</label>
-    <select v-if="options" :name="`v-select--${name}`" :id="`v-select--${name}`" @input="change">
+    <select v-if="options" :name="`v-select--${name}`" :id="`v-select--${name}`" @input="e => $emit('change', e.target.value)">
       <option v-for="option in options" :key="option[keyProp]" :value="option[keyProp]" :selected="option[keyProp] === value">
         {{ option[valueProp] }}
       </option>
