@@ -22,7 +22,7 @@ export default defineComponent({
     languages: Array,
     github: Object,
     isPrivate: Boolean,
-    demo: String
+    demoUrl: String
   },
   setup(props) {
     const route = useRoute();
