@@ -17,11 +17,12 @@ export default defineComponent({
       default: 16
     }
   },
-  data: () => ({
-    svg: ''
-  }),
-  mounted() {
-    this.svg = require(`../../assets/languages/${this.name}.svg`);
-  }
+  setup(props) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const svg = require(`../../assets/languages/${props.name}.svg`);
+    return {
+      svg
+    };
+  },
 });
 </script>

@@ -1,8 +1,8 @@
 import icon from '@/components/icon/icon.vue';
 import { ITab } from '@/models/ITab';
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-import { mapActions, mapGetters } from 'vuex';
+import { defineComponent, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'sidebar-project',
@@ -24,43 +24,49 @@ export default defineComponent({
     isPrivate: Boolean,
     demo: String
   },
-  setup() {
-    const router = useRouter();
+  setup(props) {
+    const route = useRoute();
+    const expanded = ref(false);
+    const id = route.params.id;
+
+    const toggle = () => {
+      expanded.value = !expanded.value;
+    };
+
+    if (id && id === props.id) {
+      expanded.value = true;
+    }
     return {
-      router
+      expanded,
+      toggle,
+      ...useTabs(props)
     };
   },
-  data: () => ({
-    expanded: false,
-  }),
-  computed: {
-    ...mapGetters({
-      tabs: 'allTabs'
-    }),
-  },
-  mounted() {
-    const id = this.router.currentRoute.value.params.id;
-    if (id && id === this.id) {
-      this.expanded = true;
-    }
-  },
-  methods: {
-    ...mapActions(['createTab']),
-    toggle() {
-      this.expanded = !this.expanded;
-    },
-    openTab(e: Event, url: string) {
-      e.preventDefault();
-      const tab: ITab = {
-        title: this.name,
-        path: url,
-        icon: (this.languages as string[])[0]
-      };
-      if (!(this.tabs as ITab[]).some(s => s.path === url)) {
-        this.createTab(tab);
-      }
-
-      this.router.push(url);
-    }
-  }
 });
+
+const useTabs = (props: any) => {
+  const store = useStore();
+  const router = useRouter();
+
+  const tabs = store.state.tabs.tabs;
+
+  const createTab = (tab: ITab) => store.dispatch('createTab', tab);
+
+  const openTab = (e: Event, url: string) => {
+    e.preventDefault();
+
+    const tab = {
+      title: props.name,
+      path: url,
+      icon: props.languages[0]
+    };
+    if (!tabs.some((s: ITab) => s.path === url))
+      createTab(tab);
+
+    router.push(url);
+  };
+
+  return {
+    openTab
+  };
+};

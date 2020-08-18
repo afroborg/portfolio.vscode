@@ -1,11 +1,9 @@
 import { ITab } from '@/models/ITab';
 
 export default {
-  state: () => (
-    {
-      tabs: [] as ITab[]
-    }
-  ),
+  state: () => ({
+    tabs: [] as ITab[]
+  }),
   getters: {
     allTabs: (state: any) => state.tabs,
   },

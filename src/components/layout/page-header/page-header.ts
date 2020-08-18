@@ -4,23 +4,16 @@ import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'page-header',
   setup() {
+    const router = useRouter();
+    const header = window.location.hostname;
+
+    const minimize = () => router.push('/');
+    const maximize = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+
     return {
-      router: useRouter()
+      header,
+      minimize,
+      maximize
     };
-  },
-  data: () => ({
-    header: window.location.hostname
-  }),
-  methods: {
-    minimize() {
-      this.router.push('/');
-    },
-    fullScreen() {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        document.documentElement.requestFullscreen();
-      }
-    }
   }
 });

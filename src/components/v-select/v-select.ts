@@ -25,10 +25,4 @@ export default defineComponent({
     },
     label: String
   },
-  methods: {
-    change(e: Event) {
-      const target = e.target as HTMLInputElement;
-      this.$emit('change', target.value);
-    }
-  }
 });

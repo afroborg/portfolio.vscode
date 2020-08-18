@@ -2,7 +2,7 @@ import icon from '@/components/icon/icon.vue';
 import { ITab } from '@/models/ITab';
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { mapActions, mapGetters } from 'vuex';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'page-content',
@@ -10,42 +10,41 @@ export default defineComponent({
     icon
   },
   setup() {
-    const route = computed(() => useRoute()).value;
-    const router = useRouter();
-
     return {
-      route,
-      router
+      ...useTabs()
     };
   },
-  computed: {
-    ...mapGetters({
-      tabs: 'allTabs'
-    })
-  },
-  mounted() {
-    // Control tabs with keyboard shortcuts
-    document.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.altKey && e.key.toLowerCase() === 'w' && this.tabs.length) {
-        const currentTabIndex = this.tabs.findIndex((t: ITab) => t.path === this.route.path);
-        if (currentTabIndex > -1) {
-          this.closeTab(e, currentTabIndex);
-        }
-      }
-    });
+});
 
-  },
-  methods: {
-    ...mapActions(['removeTabAtIndex']),
-    closeTab(e: Event, index: number) {
-      e.preventDefault();
-      const tab = this.tabs[index];
-      this.removeTabAtIndex(index);
+const useTabs = () => {
+  const store = useStore();
+  const route = useRoute();
+  const router = useRouter();
+  const tabs = computed(() => store.state.tabs.tabs);
 
-      if (tab.path === this.route.path) {
-        const path = this.tabs[0] ? this.tabs[0].path : '/';
-        this.router.push(path);
+  const closeTab = (e: Event, index: number) => {
+    e.preventDefault();
+
+    const tab = tabs.value[index];
+    store.dispatch('removeTabAtIndex', index);
+
+    if (tab.path === route.path) {
+      const path = tabs.value[0] ? tabs.value[0].path : '/';
+      router.push(path);
+    }
+  };
+
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.altKey && e.key.toLowerCase() === 'w' && tabs.value.length) {
+      const currentTabIndex = tabs.value.findIndex((t: ITab) => t.path === route.path);
+      if (currentTabIndex > -1) {
+        closeTab(e, currentTabIndex);
       }
     }
-  }
-});
+  });
+
+  return {
+    tabs,
+    closeTab,
+  };
+};

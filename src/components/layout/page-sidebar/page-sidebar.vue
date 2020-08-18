@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="projects-list">
-        <loader v-if="isLoading" message="Loading projects..." />
+        <loader v-if="loadingProjects" message="Loading projects..." />
 
         <template v-else>
           <sidebar-project v-for="project in projects" :key="project.name" v-bind="project" />
