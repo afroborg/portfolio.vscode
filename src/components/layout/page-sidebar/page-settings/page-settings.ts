@@ -1,13 +1,24 @@
 import notification from '@/components/notification/notification.vue';
 import vSelect from '@/components/v-select/v-select.vue';
+import { addNotification } from '@/helpers/notification-helpers';
+import { capitalize } from '@/helpers/string-helpers';
+import { INotification } from '@/models/INotification';
 import { IOption } from '@/models/IOption';
 import { defineComponent } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'page-settings',
   components: {
     vSelect,
     notification
+  },
+  setup() {
+    const store = useStore();
+    const add = (notification: INotification) => addNotification(notification, store);
+    return {
+      add
+    };
   },
   data: () => ({
     theme: 'dark',
@@ -32,7 +43,7 @@ export default defineComponent({
   }),
   mounted() {
     const theme = localStorage.getItem('theme') || 'dark';
-    this.setTheme(theme);
+    this.setTheme(theme, false);
 
     // Theme switcher with alt+t
     document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -45,11 +56,15 @@ export default defineComponent({
 
   },
   methods: {
-    setTheme(theme: string) {
-      if (this.themes.some(t => t.key === theme)) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        this.theme = theme;
+    setTheme(key: string, showNotification = true) {
+      const theme = this.themes.find(t => t.key === key);
+      if (theme) {
+        document.documentElement.setAttribute('data-theme', key);
+        localStorage.setItem('theme', key);
+        this.theme = key;
+
+        if (showNotification)
+          this.add({ header: 'Theme updated', body: `${capitalize(theme.value)} is now the active theme`, type: 'success' });
       }
     }
   },

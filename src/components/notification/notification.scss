@@ -5,6 +5,7 @@ $notification-close-btn-size: 16px;
   z-index: 10;
   top: $margin-triple;
   right: $margin-triple;
+  overflow: hidden;
 }
 
 .notification {
@@ -15,6 +16,8 @@ $notification-close-btn-size: 16px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   overflow: hidden;
+  margin-bottom: $margin-double;
+  animation: notification 400ms;
 }
 
 .notification__content {
@@ -29,6 +32,10 @@ $notification-close-btn-size: 16px;
   border-radius: 50%;
   background: $color-mac-red;
   position: absolute;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .notification__header {
