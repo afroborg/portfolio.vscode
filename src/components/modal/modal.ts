@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 
 export default defineComponent({
   name: 'modal',
@@ -23,26 +23,26 @@ export default defineComponent({
     },
     title: String,
   },
-  data: () => ({
-    expanded: false,
-  }),
-  mounted() {
-    // Close modal with esc key
-    document.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (this.visible && e.key.toLowerCase() === 'escape') {
-        this.onClose?.();
-      }
+  setup(props) {
+    const expanded = ref(false);
+    const expand = () => expanded.value = !expanded.value;
+    const close = () => props.onClose?.();
+    const ok = () => props.onOk?.();
+
+    onMounted(() => {
+      // Close modal with esc key
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (props.visible && e.key.toLowerCase() === 'escape') {
+          close();
+        }
+      });
     });
+
+    return {
+      expanded,
+      expand,
+      close,
+      ok
+    };
   },
-  methods: {
-    ok() {
-      this.ok?.();
-    },
-    close() {
-      this.onClose?.();
-    },
-    expand() {
-      this.expanded = !this.expanded;
-    },
-  }
 });
