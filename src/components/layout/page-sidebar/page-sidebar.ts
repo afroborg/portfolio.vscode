@@ -45,7 +45,8 @@ const useProjects = () => {
   });
 
   return {
-    projects
+    projects,
+    loadingProjects
   };
 };
 
