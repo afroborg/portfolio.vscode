@@ -1,6 +1,11 @@
 <template>
   <div class="project__page" v-if="!isLoadingProject">
     <h1>{{ project.name }}</h1>
+
+    <a v-if="project.demoUrl" :href="project.demoUrl" target="_blank" rel="norefferer" class="project__demo-url">
+      {{ project.demoUrl }}
+    </a>
+
     <div class="project__languages__list">
       <div v-for="language in project.languages" :key="language" class="project__language" :title="language">
         <icon :name="language" :size="24" />

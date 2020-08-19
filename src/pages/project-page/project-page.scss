@@ -3,6 +3,15 @@
   overflow-x: hidden;
 }
 
+.project__demo-url {
+  font-style: italic;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
 .project__page h2 {
   font-size: 1.2em;
   margin: $margin-double 0;
