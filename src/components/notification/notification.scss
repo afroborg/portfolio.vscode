@@ -12,16 +12,16 @@ $notification-close-btn-size: 16px;
   background: $color-code-content;
   width: 250px;
   display: grid;
-  grid-template-columns: 1fr 10px;
+  grid-template-columns: 1fr 16px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
   margin-bottom: $margin-double;
   animation: notification 400ms;
 }
 
 .notification__content {
-  padding: $padding;
+  padding: $padding-double;
   margin-left: calc(#{$notification-close-btn-size} + #{$padding});
 }
 

@@ -38,7 +38,7 @@ const useThemes = (addons: any) => {
       theme.value = key;
 
       if (showNotification)
-        addons.add({ header: 'Theme updated', body: `${capitalize(themeToSet.value)} is now the active theme`, type: 'success' });
+        addons.add({ header: 'Theme updated', body: `${capitalize(themeToSet.value)} selected`, type: 'success' });
     }
   };
 

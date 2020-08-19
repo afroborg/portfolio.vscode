@@ -1,0 +1,91 @@
+.root__page {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20% $padding-triple $padding-triple;
+}
+
+.root__page__icons-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  .root__page__icon {
+    opacity: 0.2;
+    animation: rootIcon 3s infinite linear;
+    position: absolute;
+  }
+}
+
+.hero__text {
+  position: relative;
+  text-transform: uppercase;
+  margin-left: 5%;
+}
+
+.hero__text h2 {
+  font-size: 1.4em;
+  span {
+    color: $color-complementary;
+  }
+}
+
+.hero__text h1 { 
+  font-weight: $font-weight-black;
+  font-size: 3em;
+  margin-top: -$margin;
+}
+
+.hero__text-btn {
+  margin-top: $margin;
+  display: inline-block;
+  padding: $padding $padding-double;
+  color: $color-complementary;
+  border: 1px solid $color-complementary;
+  border-radius: 4px;
+  transition: all 200ms;
+  
+  i {
+    margin-right: $margin;
+  }
+
+  &:hover {
+    background: $color-complementary;
+    color: $color-code-content;
+  }
+}
+
+.root__page__keyboard-shortcuts {
+  position: relative;
+  margin-top: auto;
+  width: 300px;
+
+  @media #{$screen-small} {
+    display: none;
+  }
+}
+
+.keyboard__shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: $margin 0;
+}
+
+.keyboard__shortcut__keys {
+  margin-left: $margin;
+
+  span {
+    width: 55px;
+    padding: $padding;
+    text-align: center;
+    display: inline-block;
+    background: $color-code-sidebar;
+    margin: 0 $margin-half;
+    border-radius: 4px;
+    font-weight: $font-weight-bold;
+  }
+}
