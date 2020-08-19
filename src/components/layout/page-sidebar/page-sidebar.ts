@@ -2,6 +2,7 @@ import checkbox from '@/components/checkbox/checkbox.vue';
 import icon from '@/components/icon/icon.vue';
 import loader from '@/components/loader/loader.vue';
 import modal from '@/components/modal/modal.vue';
+import { useModal } from '@/helpers/cmp/modal-helpers';
 import { addNotification } from '@/helpers/notification-helpers';
 import { INotification } from '@/models/INotification';
 import { computed, defineComponent, onMounted, reactive, ref } from 'vue';
@@ -25,7 +26,7 @@ export default defineComponent({
     return {
       ...projects,
       ...useFilters(),
-      ...useSettings(),
+      ...useModal('settings'),
       ...useLinks(),
       ...useNotification(),
       ...useExpanding()
@@ -52,24 +53,12 @@ const useProjects = () => {
 
 const useFilters = () => {
   const filters = reactive([] as any[]);
-  const showFilterModal = ref(false);
 
-  const toggleFilterModal = () => showFilterModal.value = !showFilterModal.value;
+  const modal = useModal('filter');
 
   return {
     filters,
-    showFilterModal,
-    toggleFilterModal
-  };
-};
-
-const useSettings = () => {
-  const showSettingsModal = ref(false);
-  const toggleSettingsModal = () => showSettingsModal.value = !showSettingsModal.value;
-
-  return {
-    showSettingsModal,
-    toggleSettingsModal
+    ...modal,
   };
 };
 
