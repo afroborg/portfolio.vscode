@@ -9,7 +9,8 @@
 
       <div class="projects-list__item__content">
         <router-link :to="`/projects/${id}/description`" @click="e => openTab(e, `/projects/${id}/description`)" class="projects-list__item__content__item" active-class="projects-list__item__content__item--active">
-          <span>readme.md</span>
+          <i class="fal fa-info-circle" />
+          <span>Information</span>
         </router-link>
         <a
           :href="!github ? '#' : `https://github.com/${github.user}/${github.repository}`"
@@ -17,11 +18,13 @@
           :class="[!github && 'projects-list__item__content__item--disabled']"
           target="_blank"
           rel="norefferer">
-          <span>github.html</span>
+          <i class="fab fa-github" />
+          <span>Github</span>
           <i v-if="!github || isPrivate" class="fal fa-lock-alt" />
         </a>
         <a :href="!demoUrl ? '#' : demoUrl" class="projects-list__item__content__item" :class="[!demoUrl && 'projects-list__item__content__item--disabled']" target="_blank" rel="norefferer">
-          <span>demo.html</span>
+          <i class="fal fa-globe" />
+          <span>Demo</span>
           <i v-if="!demoUrl" class="fal fa-lock-alt" />
         </a>
       </div>
