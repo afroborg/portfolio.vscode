@@ -3,6 +3,10 @@
   flex-direction: column;
   position: relative;
   padding: 20% $padding-triple $padding-triple;
+
+  @media #{$screen-small} {
+    padding-top: 40%;
+  }
 }
 
 .root__page__icons-wrapper {
@@ -20,6 +24,44 @@
   }
 }
 
+.root__page__arrow {
+  $height: 40px;
+  position: absolute;
+  top: 3%;
+  left: $height + $margin;
+  background: $color-complementary;
+  color: $color-code-sidebar;
+  padding: 0 $padding-double;
+  line-height: $height;
+  height: $height;
+  font-weight: $font-weight-bold;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -$height/2;
+    width: 0;
+    height: 0;
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+    border-right: $height/2 solid $color-complementary;
+  }
+
+  @media #{$screen-small} {
+    left: auto;
+    right: $margin;
+
+    &::before {
+      left: auto;
+      right: 0;
+      top: -$height;
+      border-left: $height/2 solid transparent;
+      border-right: $height/2 solid transparent;
+      border-bottom: $height/2 solid $color-complementary;
+    }
+  }
+}
+
 .hero__text {
   position: relative;
   text-transform: uppercase;
@@ -33,7 +75,7 @@
   }
 }
 
-.hero__text h1 { 
+.hero__text h1 {
   font-weight: $font-weight-black;
   font-size: 3em;
   margin-top: -$margin;
@@ -47,7 +89,7 @@
   border: 1px solid $color-complementary;
   border-radius: 4px;
   transition: all 200ms;
-  
+  cursor: pointer;
   i {
     margin-right: $margin;
   }

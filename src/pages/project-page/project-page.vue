@@ -60,7 +60,7 @@
             <div class="commmit__authored">
               <span>
                 <a :href="commit.author.url" target="_blank" rel="norefferer">{{ commit.author.name }}</a>
-                authored {{ toDaysSince(commit.date) }}
+                - {{ toDaysSince(commit.date) }}
               </span>
             </div>
           </div>
