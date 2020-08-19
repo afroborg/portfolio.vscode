@@ -8,7 +8,7 @@
       <div class="hero__text">
         <h2><span>Hello,</span> I'm Axel Froborg</h2>
         <h1>Web Developer</h1>
-        <router-link to="/contact" class="hero__text-btn">
+        <router-link to="#" class="hero__text-btn">
           <i class="fal fa-paper-plane" />
           <span>Contact</span>
         </router-link>
