@@ -2,6 +2,7 @@ import icon from '@/components/icon/icon.vue';
 import modal from '@/components/modal/modal.vue';
 import { useModal } from '@/helpers/cmp/modal-helpers';
 import { defineComponent, ref } from 'vue';
+import contact from './contact/contact.vue';
 import keyboardShortcuts from './keyboard-shortcuts/keyboard-shortcuts.vue';
 
 export default defineComponent({
@@ -10,6 +11,7 @@ export default defineComponent({
     icon,
     modal,
     keyboardShortcuts,
+    contact,
   },
   setup: () => ({
     ...setupIcons(),

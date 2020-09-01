@@ -37,7 +37,9 @@
     :on-ok="toggleContactModal"
     :on-close="toggleContactModal"
     :show-footer="false"
-  />
+  >
+    <contact />
+  </modal>
 </template>
 
 <script lang="ts" src="./root-page.ts"></script>
