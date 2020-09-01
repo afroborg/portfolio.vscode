@@ -7,11 +7,11 @@ import { useStore } from 'vuex';
 export default defineComponent({
   name: 'page-content',
   components: {
-    icon
+    icon,
   },
   setup() {
     return {
-      ...useTabs()
+      ...useTabs(),
     };
   },
 });
@@ -35,8 +35,14 @@ const useTabs = () => {
   };
 
   document.addEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.altKey && e.key.toLowerCase() === 'w' && tabs.value.length) {
-      const currentTabIndex = tabs.value.findIndex((t: ITab) => t.path === route.path);
+    if (
+      e.altKey &&
+      (e.key.toLowerCase() === 'w' || e.key === 'Ω') &&
+      tabs.value.length
+    ) {
+      const currentTabIndex = tabs.value.findIndex(
+        (t: ITab) => t.path === route.path
+      );
       if (currentTabIndex > -1) {
         closeTab(e, currentTabIndex);
       }

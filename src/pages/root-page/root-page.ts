@@ -2,17 +2,18 @@ import icon from '@/components/icon/icon.vue';
 import modal from '@/components/modal/modal.vue';
 import { useModal } from '@/helpers/cmp/modal-helpers';
 import { defineComponent, ref } from 'vue';
-
+import keyboardShortcuts from './keyboard-shortcuts/keyboard-shortcuts.vue';
 
 export default defineComponent({
   name: 'root-page',
   components: {
     icon,
-    modal
+    modal,
+    keyboardShortcuts,
   },
   setup: () => ({
     ...setupIcons(),
-    ...useModal('contact')
+    ...useModal('contact'),
   }),
 });
 
@@ -38,11 +39,11 @@ const setupIcons = () => {
       icon: LANGUAGES[rand],
       x: window.innerWidth * Math.random(),
       y: window.innerHeight * Math.random(),
-      speed: Math.floor(Math.random() * 5000) + 2000
+      speed: Math.floor(Math.random() * 5000) + 2000,
     });
   }
 
   return {
-    icons
+    icons,
   };
 };

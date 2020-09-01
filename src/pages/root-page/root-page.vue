@@ -1,7 +1,16 @@
 <template>
   <div class="root__page">
     <div class="root__page__icons-wrapper">
-      <icon v-for="icon in icons" :key="icon.icon" :name="icon.icon" :style="`top: ${icon.x}px; left: ${icon.y}px; animation-duration: ${icon.speed}ms`" class="root__page__icon" :size="32" />
+      <icon
+        v-for="icon in icons"
+        :key="icon.icon"
+        :name="icon.icon"
+        :style="
+          `top: ${icon.x}px; left: ${icon.y}px; animation-duration: ${icon.speed}ms`
+        "
+        class="root__page__icon"
+        :size="32"
+      />
     </div>
 
     <div class="root__page__arrow">
@@ -19,31 +28,16 @@
       </div>
     </div>
 
-    <div class="root__page__keyboard-shortcuts">
-      <h2>Keyboard shortcuts</h2>
-      <div class="keyboard__shortcuts__container">
-        <div class="keyboard__shortcut">
-          <p>Change theme</p>
-          <div class="keyboard__shortcut__keys">
-            <span>Alt</span>
-            +
-            <span>T</span>
-          </div>
-        </div>
-
-        <div class="keyboard__shortcut">
-          <p>Close tab</p>
-          <div class="keyboard__shortcut__keys">
-            <span>Alt</span>
-            +
-            <span>W</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <keyboard-shortcuts />
   </div>
 
-  <modal :visible="showContactModal" title="Contact" :on-ok="toggleContactModal" :on-close="toggleContactModal" :show-footer="false" />
+  <modal
+    :visible="showContactModal"
+    title="Contact"
+    :on-ok="toggleContactModal"
+    :on-close="toggleContactModal"
+    :show-footer="false"
+  />
 </template>
 
 <script lang="ts" src="./root-page.ts"></script>
