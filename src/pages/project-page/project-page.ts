@@ -9,13 +9,13 @@ export default defineComponent({
   name: 'project-page',
   components: {
     icon,
-    loader
+    loader,
   },
   setup() {
     const project = useProject();
     return {
       ...project,
-      toDaysSince
+      toDaysSince,
     };
   },
 });
@@ -47,6 +47,6 @@ const useProject = () => {
   return {
     project,
     isLoadingProject,
-    getProjectData
+    getProjectData,
   };
 };
